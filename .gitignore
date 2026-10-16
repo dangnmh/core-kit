@@ -1,0 +1,33 @@
+# Binaries & Build Artifacts
+bin/
+dist/
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.txt
+
+# Logs & Runtime Data
+logs/
+*.log
+*.jsonl
+
+# Node / Bun
+node_modules/
+bun.lockb
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+

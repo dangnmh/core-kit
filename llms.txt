@@ -1,0 +1,65 @@
+# Core-Kit AI Context Sitemap (`llms.txt`)
+> High-performance polyglot engineering foundation (Go 1.27+, Python 3.14+, TypeScript/Bun 1.4+).
+> Use this sitemap to locate authoritative specifications, architecture diagrams, contracts, and runbooks.
+
+## Layer 0: Root Governance & AI Context Router
+- [`/AGENTS.md`](file:///home/dangnmh/work/core-kit/AGENTS.md): Project Constitution (`CONST-01..08`), security rules, and commands.
+- [`/llms.txt`](file:///home/dangnmh/work/core-kit/llms.txt): This AI sitemap and context router.
+- [`/README.md`](file:///home/dangnmh/work/core-kit/README.md): Quickstart, package index, and consumer service integration.
+- [`/CHANGELOG.md`](file:///home/dangnmh/work/core-kit/CHANGELOG.md): Master release ledger and semantic version history.
+
+## Layer 1: Component Nearest-Wins Guardrails (HADS Format)
+- [`pkg/README.md`](file:///home/dangnmh/work/core-kit/pkg/README.md): Go foundation packages, entrypoints, and bug memory.
+- [`py/logger-py/README.md`](file:///home/dangnmh/work/core-kit/py/logger-py/README.md): Python logger, Ruff commands, and emoji stripping.
+- [`ts/logger-ts/README.md`](file:///home/dangnmh/work/core-kit/ts/logger-ts/README.md): TypeScript logger, Bun commands, and stream injection.
+
+## Layer 2: Living System Truth & Master Indexes
+- [`docs/README.md`](file:///home/dangnmh/work/core-kit/docs/README.md): Master documentation hub across all components and ADRs.
+- [`docs/06-feature-matrix-and-roadmap.md`](file:///home/dangnmh/work/core-kit/docs/06-feature-matrix-and-roadmap.md): Traceability matrix from feature IDs to tests.
+- [`docs/adr/ADR-001-unified-polyglot-logging.md`](file:///home/dangnmh/work/core-kit/docs/adr/ADR-001-unified-polyglot-logging.md): Unified RFC3339 logging schema ADR.
+- [`docs/adr/ADR-002-websocket-architecture.md`](file:///home/dangnmh/work/core-kit/docs/adr/ADR-002-websocket-architecture.md): Sharded WebSocket pool & RPC dispatcher ADR.
+- [`docs/adr/ADR-003-polyglot-linter-and-ci-toolchain.md`](file:///home/dangnmh/work/core-kit/docs/adr/ADR-003-polyglot-linter-and-ci-toolchain.md): Polyglot linter, formatter, and CI toolchain ADR.
+- [`docs/runbooks/rb-01-websocket-connection-exhaustion-and-reconnect-storm.md`](file:///home/dangnmh/work/core-kit/docs/runbooks/rb-01-websocket-connection-exhaustion-and-reconnect-storm.md): SRE runbook for WS shard limits.
+- [`docs/runbooks/rb-02-bearer-auth-startup-panic-and-crashloop.md`](file:///home/dangnmh/work/core-kit/docs/runbooks/rb-02-bearer-auth-startup-panic-and-crashloop.md): SRE runbook for bearer auth panic.
+- [`docs/runbooks/rb-03-circuit-breaker-open-cascade-and-rate-limiting.md`](file:///home/dangnmh/work/core-kit/docs/runbooks/rb-03-circuit-breaker-open-cascade-and-rate-limiting.md): SRE runbook for circuit breaker cascades.
+
+## Layer 2 & 3: Component Truth Hubs (6 Canonical Items)
+### Go Foundation (`pkg/*`)
+- [`docs/pkg/README.md`](file:///home/dangnmh/work/core-kit/docs/pkg/README.md): Go feature registry and navigation hub.
+- [`docs/pkg/architecture.md`](file:///home/dangnmh/work/core-kit/docs/pkg/architecture.md): Internal architecture, package tree, and state diagrams.
+- [`docs/pkg/contracts/api.md`](file:///home/dangnmh/work/core-kit/docs/pkg/contracts/api.md): Synchronous Go API contracts and signatures.
+- [`docs/pkg/contracts/events-and-data.md`](file:///home/dangnmh/work/core-kit/docs/pkg/contracts/events-and-data.md): In-memory data structures and event definitions.
+- [`docs/pkg/tasks/sprint-1-core-standardization.md`](file:///home/dangnmh/work/core-kit/docs/pkg/tasks/sprint-1-core-standardization.md): Sprint 1 OpenSpec delta and EARS criteria.
+- [`docs/pkg/releases/v1.0.0-core-standardization.md`](file:///home/dangnmh/work/core-kit/docs/pkg/releases/v1.0.0-core-standardization.md): Release v1.0.0 notes and test evidence.
+- [`docs/pkg/backlog/backlog-v1.md`](file:///home/dangnmh/work/core-kit/docs/pkg/backlog/backlog-v1.md): Deferred Go backlog (gRPC, Kafka drivers).
+
+### Python Telemetry (`py/logger-py`)
+- [`docs/py/README.md`](file:///home/dangnmh/work/core-kit/docs/py/README.md): Python feature registry and navigation hub.
+- [`docs/py/architecture.md`](file:///home/dangnmh/work/core-kit/docs/py/architecture.md): Record formatting pipeline and trace hoisting.
+- [`docs/py/contracts/api.md`](file:///home/dangnmh/work/core-kit/docs/py/contracts/api.md): Python API contract and exported functions.
+- [`docs/py/contracts/events-and-data.md`](file:///home/dangnmh/work/core-kit/docs/py/contracts/events-and-data.md): Log schema event payload and environment variables.
+- [`docs/py/tasks/sprint-1-logger-and-ruff.md`](file:///home/dangnmh/work/core-kit/docs/py/tasks/sprint-1-logger-and-ruff.md): Sprint 1 OpenSpec delta and Ruff tasks.
+- [`docs/py/releases/v1.0.0-core-standardization.md`](file:///home/dangnmh/work/core-kit/docs/py/releases/v1.0.0-core-standardization.md): Release v1.0.0 notes and test evidence.
+- [`docs/py/backlog/backlog-v1.md`](file:///home/dangnmh/work/core-kit/docs/py/backlog/backlog-v1.md): Deferred Python backlog (ASGI middleware).
+
+### TypeScript Telemetry (`ts/logger-ts`)
+- [`docs/ts/README.md`](file:///home/dangnmh/work/core-kit/docs/ts/README.md): TypeScript feature registry and navigation hub.
+- [`docs/ts/architecture.md`](file:///home/dangnmh/work/core-kit/docs/ts/architecture.md): Stream routing and child logger architecture.
+- [`docs/ts/contracts/api.md`](file:///home/dangnmh/work/core-kit/docs/ts/contracts/api.md): TypeScript API contract and type definitions.
+- [`docs/ts/contracts/events-and-data.md`](file:///home/dangnmh/work/core-kit/docs/ts/contracts/events-and-data.md): Log schema event payload and environment variables.
+- [`docs/ts/tasks/sprint-1-logger-and-eslint.md`](file:///home/dangnmh/work/core-kit/docs/ts/tasks/sprint-1-logger-and-eslint.md): Sprint 1 OpenSpec delta and ESLint tasks.
+- [`docs/ts/releases/v1.0.0-core-standardization.md`](file:///home/dangnmh/work/core-kit/docs/ts/releases/v1.0.0-core-standardization.md): Release v1.0.0 notes and test evidence.
+- [`docs/ts/backlog/backlog-v1.md`](file:///home/dangnmh/work/core-kit/docs/ts/backlog/backlog-v1.md): Deferred TypeScript backlog (Hono middleware).
+
+## Layer 3: Cross-Cutting BMAD SDLC Governance
+- [`docs/bmad/01-project-brief.md`](file:///home/dangnmh/work/core-kit/docs/bmad/01-project-brief.md): Product vision, value pillars, and audit findings.
+- [`docs/bmad/02-prd.md`](file:///home/dangnmh/work/core-kit/docs/bmad/02-prd.md): Requirements, epics, user stories, and acceptance criteria.
+- [`docs/bmad/04-architecture.md`](file:///home/dangnmh/work/core-kit/docs/bmad/04-architecture.md): Polyglot platform architecture and C4 diagrams.
+- [`docs/bmad/06-security-spec.md`](file:///home/dangnmh/work/core-kit/docs/bmad/06-security-spec.md): Threat modeling, STRIDE analysis, and security controls.
+- [`docs/bmad/06b-library-manifest.md`](file:///home/dangnmh/work/core-kit/docs/bmad/06b-library-manifest.md): Verified ecosystem library catalog and API snippets.
+- [`docs/bmad/07-execution-plan.md`](file:///home/dangnmh/work/core-kit/docs/bmad/07-execution-plan.md): 4-wave execution roadmap and resource allocation.
+- [`docs/bmad/08-review-report.md`](file:///home/dangnmh/work/core-kit/docs/bmad/08-review-report.md): Multi-reviewer code quality and security triage report.
+- [`docs/bmad/09-qa-release-report.md`](file:///home/dangnmh/work/core-kit/docs/bmad/09-qa-release-report.md): QA release gate and end-to-end verification report.
+- [`docs/bmad/10-technical-docs-and-runbooks.md`](file:///home/dangnmh/work/core-kit/docs/bmad/10-technical-docs-and-runbooks.md): Documentation merge report and SRE runbook summary.
+- [`docs/bmad/11-project-librarian-hub.md`](file:///home/dangnmh/work/core-kit/docs/bmad/11-project-librarian-hub.md): Master PMO governance, drift audit, and sign-off hub.
+- [`docs/bmad/stories/`](file:///home/dangnmh/work/core-kit/docs/bmad/stories): Cross-component sprint implementation story blueprints.

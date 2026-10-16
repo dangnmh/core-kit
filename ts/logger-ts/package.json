@@ -1,0 +1,21 @@
+{
+  "name": "@dangnmh/logger-ts",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bun": "^1.4.3",
+    "@types/node": "^26.6.5",
+    "eslint": "^10.12.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.2"
+  }
+}
