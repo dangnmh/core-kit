@@ -348,3 +348,38 @@ sub:
 		})
 	}
 }
+
+type TestTypedEnvConfig struct {
+	Host string `env:"TEST_CK_HOST" validate:"required"`
+	Port int    `env:"TEST_CK_PORT" validate:"required,gt=0"`
+}
+
+func TestLoadEnvAndSQLFile(t *testing.T) {
+	t.Setenv("TEST_CK_HOST", "localhost")
+	t.Setenv("TEST_CK_PORT", "8080")
+
+	cfg, err := LoadEnv[TestTypedEnvConfig]()
+	if err != nil {
+		t.Fatalf("expected LoadEnv success, got %v", err)
+	}
+	if cfg.Host != "localhost" || cfg.Port != 8080 {
+		t.Fatalf("unexpected parsed config: %+v", cfg)
+	}
+
+	unval := ParseEnvUnvalidated[TestTypedEnvConfig]()
+	if unval.Host != "localhost" || unval.Port != 8080 {
+		t.Fatalf("unexpected unvalidated config: %+v", unval)
+	}
+
+	tmpDir := t.TempDir()
+	sqlFile := filepath.Join(tmpDir, "schema.sql")
+	if err := os.WriteFile(sqlFile, []byte("SELECT 1;"), 0644); err != nil {
+		t.Fatalf("write sql file: %v", err)
+	}
+	if got := LoadSQLFile("", filepath.Join(tmpDir, "missing.sql"), sqlFile); got != "SELECT 1;" {
+		t.Fatalf("expected SQL content from candidate, got %q", got)
+	}
+	if got := LoadSQLFile(sqlFile); got != "SELECT 1;" {
+		t.Fatalf("expected SQL content from explicitPath, got %q", got)
+	}
+}

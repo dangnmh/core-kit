@@ -86,3 +86,26 @@ func (b Backoff) Sleep(ctx context.Context, attempt int) error {
 		return nil
 	}
 }
+
+// RetryWithJitter executes fn up to maxAttempts times using full-jitter exponential backoff.
+func RetryWithJitter(ctx context.Context, maxAttempts int, base, cap time.Duration, fn func() error) error {
+	if maxAttempts <= 0 {
+		maxAttempts = 3
+	}
+	b := NewBackoff(base, cap)
+	var lastErr error
+	for attempt := 0; attempt < maxAttempts; attempt++ {
+		if err := fn(); err == nil {
+			return nil
+		} else {
+			lastErr = err
+		}
+		if attempt == maxAttempts-1 {
+			break
+		}
+		if sleepErr := b.Sleep(ctx, attempt); sleepErr != nil {
+			return sleepErr
+		}
+	}
+	return lastErr
+}

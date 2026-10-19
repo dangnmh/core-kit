@@ -2,11 +2,71 @@ package config
 
 import (
 	"fmt"
+	"os"
 	"reflect"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/caarlos0/env/v11"
+	"github.com/dangnmh/core-kit/pkg/logger"
+	"github.com/go-playground/validator/v10"
+	"github.com/joho/godotenv"
 )
+
+// LoadDotEnv loads key=value pairs from .env (or custom paths) without overriding existing environment variables.
+func LoadDotEnv(paths ...string) {
+	if len(paths) == 0 {
+		_ = godotenv.Load(".env")
+		return
+	}
+	_ = godotenv.Load(paths...)
+}
+
+// LoadEnv parses environment variables into a generic struct T via caarlos0/env/v11 and validates it via validator/v10.
+func LoadEnv[T any]() (*T, error) {
+	cfg := new(T)
+	if err := env.Parse(cfg); err != nil {
+		logger.Error("Failed to parse environment config", "error", err)
+		return nil, err
+	}
+	if err := validator.New().Struct(cfg); err != nil {
+		logger.Error("Invalid environment configuration", "error", err)
+		return nil, err
+	}
+	return cfg, nil
+}
+
+// NewFxEnvConfig loads .env from the current component directory and parses + validates typed Config T for Uber Fx.
+func NewFxEnvConfig[T any]() (*T, error) {
+	LoadDotEnv()
+	return LoadEnv[T]()
+}
+
+// ParseEnvUnvalidated parses environment variables into a generic struct T without struct validation (for standalone unit test helpers).
+func ParseEnvUnvalidated[T any]() *T {
+	cfg := new(T)
+	_ = env.Parse(cfg)
+	return cfg
+}
+
+// LoadSQLFile reads the first non-empty SQL file from explicitPath followed by candidates.
+func LoadSQLFile(explicitPath string, candidates ...string) string {
+	all := make([]string, 0, 1+len(candidates))
+	if strings.TrimSpace(explicitPath) != "" {
+		all = append(all, strings.TrimSpace(explicitPath))
+	}
+	all = append(all, candidates...)
+	for _, p := range all {
+		if strings.TrimSpace(p) == "" {
+			continue
+		}
+		if b, err := os.ReadFile(p); err == nil && len(b) > 0 {
+			return string(b)
+		}
+	}
+	return ""
+}
 
 var durationType = reflect.TypeOf(time.Duration(0))
 var timeType = reflect.TypeOf(time.Time{})

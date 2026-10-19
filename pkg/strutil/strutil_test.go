@@ -23,3 +23,27 @@ func TestTruncateRunes(t *testing.T) {
 		t.Fatal("expected full string")
 	}
 }
+
+func TestSlugify(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		input    string
+		expected string
+	}{
+		{"AutoForm AI", "autoform-ai"},
+		{"Ứng dụng Quản lý Hóa đơn Đơn Giản", "ung-dung-quan-ly-hoa-don-don-gian"},
+		{"Đà Nẵng Tech Hub 2026!", "da-nang-tech-hub-2026"},
+		{"  ---Messy   String___With Symbols #@! --- ", "messy-string-with-symbols"},
+		{"VibeInvoice AI — Trích Xuất Hóa Đơn Đỏ!", "vibeinvoice-ai-trich-xuat-hoa-don-do"},
+		{"   ", ""},
+		{"!@#$%^&*()", ""},
+	}
+
+	for _, tt := range tests {
+		actual := strutil.Slugify(tt.input)
+		if actual != tt.expected {
+			t.Fatalf("Slugify(%q) = %q, expected %q", tt.input, actual, tt.expected)
+		}
+	}
+}
